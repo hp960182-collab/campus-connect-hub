@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, Mail, MessageCircle, Smartphone, Camera } from "lucide-react";
+import { ArrowRight, Mail, MessageCircle, Smartphone, Camera, Flower } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const JoinSection = () => {
@@ -9,8 +9,12 @@ const JoinSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="join" className="section-padding bg-secondary/30" ref={ref}>
-      <div className="container-narrow mx-auto">
+    <section id="join" className="section-padding bg-secondary/30 relative overflow-hidden" ref={ref}>
+      {/* Decorative */}
+      <div className="absolute top-20 right-20 w-64 h-64 bg-sakura/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 left-20 w-48 h-48 bg-petal/10 rounded-full blur-3xl" />
+
+      <div className="container-narrow mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -18,7 +22,8 @@ const JoinSection = () => {
           className="text-center"
         >
           {/* Header */}
-          <span className="text-gold font-semibold text-sm uppercase tracking-wider">
+          <span className="inline-flex items-center gap-2 text-sakura-dark font-semibold text-sm uppercase tracking-wider">
+            <Flower className="w-4 h-4" />
             Get Started
           </span>
           <h2 className="section-title mt-3">Join Our Community</h2>
@@ -32,14 +37,14 @@ const JoinSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-card border border-border rounded-2xl p-8 lg:p-12 shadow-lg max-w-2xl mx-auto"
+            className="bg-card border border-border rounded-3xl p-8 lg:p-12 shadow-lg max-w-2xl mx-auto"
           >
-            <h3 className="font-display text-2xl font-bold text-navy mb-6">
+            <h3 className="font-display text-2xl font-bold text-foreground mb-6">
               Start Your Journey
             </h3>
 
             {/* Primary Action */}
-            <Button variant="hero" size="lg" className="mb-8" asChild>
+            <Button variant="sakura" size="lg" className="mb-8" asChild>
               <a href="#">
                 <MessageCircle className="mr-2 h-5 w-5" />
                 Join Discord Server
@@ -79,7 +84,7 @@ const JoinSection = () => {
               </p>
               <a
                 href="mailto:studentconnect@college.edu"
-                className="inline-flex items-center gap-2 text-navy hover:text-gold transition-colors font-medium"
+                className="inline-flex items-center gap-2 text-foreground hover:text-sakura-dark transition-colors font-medium"
               >
                 <Mail className="h-4 w-4" />
                 studentconnect@college.edu

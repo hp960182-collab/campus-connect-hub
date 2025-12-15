@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { MessageCircle, Smartphone, Camera, ExternalLink } from "lucide-react";
+import { MessageCircle, Smartphone, Camera, ExternalLink, Flower } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const platforms = [
@@ -15,7 +15,7 @@ const platforms = [
       "Real-time discussions",
       "Peer support forums",
     ],
-    color: "from-navy to-navy-light",
+    color: "from-sakura-dark to-sakura",
     link: "#",
   },
   {
@@ -28,7 +28,7 @@ const platforms = [
       "Easy onboarding",
       "Mobile-first access",
     ],
-    color: "from-emerald-600 to-emerald-500",
+    color: "from-emerald-500 to-emerald-400",
     link: "#",
   },
   {
@@ -41,7 +41,7 @@ const platforms = [
       "Community moments",
       "Visual updates",
     ],
-    color: "from-pink-600 to-orange-500",
+    color: "from-rose-400 to-orange-300",
     link: "#",
   },
 ];
@@ -53,10 +53,14 @@ const PlatformsSection = () => {
   return (
     <section
       id="platforms"
-      className="section-padding bg-secondary/50"
+      className="section-padding bg-secondary/50 relative overflow-hidden"
       ref={ref}
     >
-      <div className="container-wide mx-auto">
+      {/* Decorative */}
+      <div className="absolute top-20 left-10 w-64 h-64 bg-sakura/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-48 h-48 bg-petal/10 rounded-full blur-3xl" />
+
+      <div className="container-wide mx-auto relative">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -64,7 +68,8 @@ const PlatformsSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-gold font-semibold text-sm uppercase tracking-wider">
+          <span className="inline-flex items-center gap-2 text-sakura-dark font-semibold text-sm uppercase tracking-wider">
+            <Flower className="w-4 h-4" />
             Where We Connect
           </span>
           <h2 className="section-title mt-3">Our Platforms</h2>
@@ -93,11 +98,11 @@ const PlatformsSection = () => {
                 {/* Icon & Name */}
                 <div className="flex items-center gap-4 mb-4">
                   <div
-                    className={`w-12 h-12 rounded-xl bg-gradient-to-br ${platform.color} flex items-center justify-center`}
+                    className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${platform.color} flex items-center justify-center`}
                   >
-                    <platform.icon className="w-6 h-6 text-ivory" />
+                    <platform.icon className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="font-display text-xl font-semibold text-navy">
+                  <h3 className="font-display text-xl font-semibold text-foreground">
                     {platform.name}
                   </h3>
                 </div>
@@ -114,7 +119,7 @@ const PlatformsSection = () => {
                       key={feature}
                       className="flex items-center gap-2 text-sm text-foreground"
                     >
-                      <div className="w-1.5 h-1.5 bg-gold rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-sakura rounded-full" />
                       {feature}
                     </li>
                   ))}

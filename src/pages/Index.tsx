@@ -6,10 +6,12 @@ import ActivitiesSection from "@/components/ActivitiesSection";
 import GuidelinesSection from "@/components/GuidelinesSection";
 import JoinSection from "@/components/JoinSection";
 import Footer from "@/components/Footer";
+import SakuraParticles from "@/components/SakuraParticles";
 
 const Index = () => {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative">
+      <SakuraParticles />
       <Navbar />
       <HeroSection />
       <AboutSection />

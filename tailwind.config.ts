@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        sans: ['Outfit', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -51,6 +51,19 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Sakura theme colors
+        sakura: {
+          DEFAULT: "hsl(var(--sakura))",
+          dark: "hsl(var(--sakura-dark))",
+          light: "hsl(var(--sakura-light))",
+          glow: "hsl(var(--sakura-glow))",
+        },
+        snow: "hsl(var(--snow))",
+        frost: "hsl(var(--frost))",
+        petal: "hsl(var(--petal))",
+        blossom: "hsl(var(--blossom))",
+        branch: "hsl(var(--branch))",
+        // Legacy aliases
         navy: {
           DEFAULT: "hsl(var(--navy))",
           light: "hsl(var(--navy-light))",
@@ -104,6 +117,14 @@ export default {
           "0%": { opacity: "0", transform: "scale(0.95)" },
           "100%": { opacity: "1", transform: "scale(1)" },
         },
+        "float": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "sway": {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -112,6 +133,8 @@ export default {
         "fade-in": "fade-in 0.8s ease-out forwards",
         "slide-in-left": "slide-in-left 0.5s ease-out forwards",
         "scale-up": "scale-up 0.4s ease-out forwards",
+        "float": "float 6s ease-in-out infinite",
+        "sway": "sway 4s ease-in-out infinite",
       },
     },
   },
