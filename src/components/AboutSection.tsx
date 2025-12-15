@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Target, Users, MessageSquare, Lightbulb } from "lucide-react";
+import { Target, Users, MessageSquare, Lightbulb, Flower } from "lucide-react";
 
 const values = [
   {
@@ -31,8 +31,12 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="section-padding bg-background" ref={ref}>
-      <div className="container-wide mx-auto">
+    <section id="about" className="section-padding bg-background relative overflow-hidden" ref={ref}>
+      {/* Decorative background */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-sakura/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-petal/5 rounded-full blur-3xl" />
+      
+      <div className="container-wide mx-auto relative">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <motion.div
@@ -40,12 +44,13 @@ const AboutSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-gold font-semibold text-sm uppercase tracking-wider">
+            <span className="inline-flex items-center gap-2 text-sakura-dark font-semibold text-sm uppercase tracking-wider">
+              <Flower className="w-4 h-4" />
               About Us
             </span>
             <h2 className="section-title mt-3">
               A Community Built on{" "}
-              <span className="text-gold">Connection</span>
+              <span className="text-gradient-sakura">Connection</span>
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6">
               StudentConnect is a student-led initiative designed to bridge the
@@ -64,19 +69,19 @@ const AboutSection = () => {
             {/* Vision Points */}
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-gold rounded-full mt-2" />
+                <div className="w-2 h-2 bg-sakura rounded-full mt-2" />
                 <p className="text-foreground">
                   Foster meaningful peer-to-peer connections across campus
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-gold rounded-full mt-2" />
+                <div className="w-2 h-2 bg-sakura rounded-full mt-2" />
                 <p className="text-foreground">
                   Provide platforms for constructive dialogue and feedback
                 </p>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-gold rounded-full mt-2" />
+                <div className="w-2 h-2 bg-sakura rounded-full mt-2" />
                 <p className="text-foreground">
                   Create opportunities for collaboration and growth
                 </p>
@@ -97,12 +102,12 @@ const AboutSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                className="card-elevated p-6 text-center"
+                className="card-elevated p-6 text-center group"
               >
-                <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-6 h-6 text-gold" />
+                <div className="w-12 h-12 bg-sakura/10 group-hover:bg-sakura/20 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors">
+                  <value.icon className="w-6 h-6 text-sakura-dark" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-navy mb-2">
+                <h3 className="font-display text-lg font-semibold text-foreground mb-2">
                   {value.title}
                 </h3>
                 <p className="text-sm text-muted-foreground">

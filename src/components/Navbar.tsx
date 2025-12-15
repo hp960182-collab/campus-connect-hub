@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Flower2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -28,7 +28,7 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-ivory/95 backdrop-blur-md shadow-md py-3"
+          ? "bg-background/90 backdrop-blur-md shadow-md py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -37,10 +37,11 @@ const Navbar = () => {
           {/* Logo */}
           <a
             href="#home"
-            className={`font-display text-xl font-bold transition-colors duration-300 ${
-              isScrolled ? "text-navy" : "text-ivory"
+            className={`flex items-center gap-2 font-display text-xl font-bold transition-colors duration-300 ${
+              isScrolled ? "text-foreground" : "text-foreground"
             }`}
           >
+            <Flower2 className="w-6 h-6 text-sakura" />
             StudentConnect
           </a>
 
@@ -50,15 +51,15 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-gold ${
-                  isScrolled ? "text-navy/80" : "text-ivory/90"
+                className={`text-sm font-medium transition-colors duration-300 hover:text-sakura ${
+                  isScrolled ? "text-foreground/80" : "text-foreground/80"
                 }`}
               >
                 {item.label}
               </a>
             ))}
             <Button
-              variant={isScrolled ? "gold" : "hero"}
+              variant="sakura"
               size="sm"
               asChild
             >
@@ -69,7 +70,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             className={`md:hidden p-2 transition-colors ${
-              isScrolled ? "text-navy" : "text-ivory"
+              isScrolled ? "text-foreground" : "text-foreground"
             }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
@@ -88,18 +89,18 @@ const Navbar = () => {
               transition={{ duration: 0.3 }}
               className="md:hidden overflow-hidden"
             >
-              <div className="py-4 space-y-3 bg-ivory/95 backdrop-blur-md rounded-lg mt-4 px-4">
+              <div className="py-4 space-y-3 bg-background/95 backdrop-blur-md rounded-2xl mt-4 px-4 border border-sakura/20">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="block py-2 text-navy font-medium hover:text-gold transition-colors"
+                    className="block py-2 text-foreground font-medium hover:text-sakura transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
                   </a>
                 ))}
-                <Button variant="gold" className="w-full mt-4" asChild>
+                <Button variant="sakura" className="w-full mt-4" asChild>
                   <a href="#join" onClick={() => setIsMobileMenuOpen(false)}>
                     Join Community
                   </a>
