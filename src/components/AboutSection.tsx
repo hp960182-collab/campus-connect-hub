@@ -1,122 +1,50 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Target, Users, MessageSquare, Lightbulb, Flower } from "lucide-react";
-
-const values = [
-  {
-    icon: Users,
-    title: "Peer-Driven",
-    description: "Built by students, for students",
-  },
-  {
-    icon: MessageSquare,
-    title: "Collaborative",
-    description: "Open dialogue and shared learning",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovative",
-    description: "Fresh ideas and creative solutions",
-  },
-  {
-    icon: Target,
-    title: "Inclusive",
-    description: "Everyone's voice matters equally",
-  },
-];
 
 const AboutSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="section-padding bg-background relative overflow-hidden" ref={ref}>
-      {/* Decorative background */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-sakura/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-petal/5 rounded-full blur-3xl" />
-      
-      <div className="container-wide mx-auto relative">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <span className="inline-flex items-center gap-2 text-sakura-dark font-semibold text-sm uppercase tracking-wider">
-              <Flower className="w-4 h-4" />
-              About Us
-            </span>
-            <h2 className="section-title mt-3">
-              A Community Built on{" "}
-              <span className="text-gradient-sakura">Connection</span>
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-              StudentConnect is a student-led initiative designed to bridge the
-              gap between academic life and campus experience. We believe in the
-              power of peer collaboration, constructive feedback, and meaningful
-              engagement.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              Our mission is simple: create a supportive digital space where
-              every student can share ideas, seek guidance, participate in
-              discussions, and contribute to improving campus life. Whether
-              it's academic support, event coordination, or voicing feedback,
-              we're here to amplify student voices.
-            </p>
+    <section id="about" className="py-32 bg-background relative" ref={ref}>
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 1 }}
+          className="text-sakura-dark text-sm tracking-[0.2em] uppercase mb-6"
+        >
+          About
+        </motion.p>
+        
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground mb-8 leading-relaxed"
+        >
+          A student-led space for peer learning, collaboration, and growth.
+        </motion.h2>
 
-            {/* Vision Points */}
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-sakura rounded-full mt-2" />
-                <p className="text-foreground">
-                  Foster meaningful peer-to-peer connections across campus
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-sakura rounded-full mt-2" />
-                <p className="text-foreground">
-                  Provide platforms for constructive dialogue and feedback
-                </p>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-sakura rounded-full mt-2" />
-                <p className="text-foreground">
-                  Create opportunities for collaboration and growth
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right - Values Grid */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 gap-4"
-          >
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
-                className="card-elevated p-6 text-center group"
-              >
-                <div className="w-12 h-12 bg-sakura/10 group-hover:bg-sakura/20 rounded-2xl flex items-center justify-center mx-auto mb-4 transition-colors">
-                  <value.icon className="w-6 h-6 text-sakura-dark" />
-                </div>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">
-                  {value.title}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex justify-center gap-12 mt-16"
+        >
+          {["Peer-Driven", "Collaborative", "Inclusive"].map((value, i) => (
+            <motion.span
+              key={value}
+              initial={{ opacity: 0, y: 10 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.5 + i * 0.1 }}
+              className="text-muted-foreground text-sm tracking-wide"
+            >
+              {value}
+            </motion.span>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

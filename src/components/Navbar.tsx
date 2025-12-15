@@ -4,12 +4,10 @@ import { Menu, X, Flower2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Platforms", href: "#platforms" },
   { label: "Activities", href: "#activities" },
-  { label: "Guidelines", href: "#guidelines" },
-  { label: "Join Us", href: "#join" },
+  { label: "Join", href: "#join" },
 ];
 
 const Navbar = () => {
@@ -28,83 +26,56 @@ const Navbar = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/90 backdrop-blur-md shadow-md py-3"
-          : "bg-transparent py-5"
+          ? "bg-background/80 backdrop-blur-md py-4"
+          : "bg-transparent py-6"
       }`}
     >
-      <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6">
         <nav className="flex items-center justify-between">
-          {/* Logo */}
-          <a
-            href="#home"
-            className={`flex items-center gap-2 font-display text-xl font-bold transition-colors duration-300 ${
-              isScrolled ? "text-foreground" : "text-foreground"
-            }`}
-          >
-            <Flower2 className="w-6 h-6 text-sakura" />
-            StudentConnect
+          <a href="#home" className="flex items-center gap-2">
+            <Flower2 className="w-5 h-5 text-sakura" />
+            <span className="font-display text-lg text-foreground">StudentConnect</span>
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-sakura ${
-                  isScrolled ? "text-foreground/80" : "text-foreground/80"
-                }`}
+                className="text-sm text-foreground/70 hover:text-sakura-dark transition-colors duration-300"
               >
                 {item.label}
               </a>
             ))}
-            <Button
-              variant="sakura"
-              size="sm"
-              asChild
-            >
-              <a href="#join">Join Community</a>
-            </Button>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
-            className={`md:hidden p-2 transition-colors ${
-              isScrolled ? "text-foreground" : "text-foreground"
-            }`}
+            className="md:hidden p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </nav>
 
-        {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
               className="md:hidden overflow-hidden"
             >
-              <div className="py-4 space-y-3 bg-background/95 backdrop-blur-md rounded-2xl mt-4 px-4 border border-sakura/20">
+              <div className="py-6 flex flex-col items-center gap-4">
                 {navItems.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="block py-2 text-foreground font-medium hover:text-sakura transition-colors"
+                    className="text-foreground hover:text-sakura-dark transition-colors"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {item.label}
                   </a>
                 ))}
-                <Button variant="sakura" className="w-full mt-4" asChild>
-                  <a href="#join" onClick={() => setIsMobileMenuOpen(false)}>
-                    Join Community
-                  </a>
-                </Button>
               </div>
             </motion.div>
           )}
