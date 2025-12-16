@@ -16,26 +16,26 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   useEffect(() => {
     // Create initial burst of petals
     const newPetals: Petal[] = [];
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 30; i++) {
       newPetals.push({
         id: i,
         x: Math.random() * 100,
-        size: Math.random() * 20 + 12,
-        delay: Math.random() * 0.8,
-        duration: Math.random() * 2 + 2,
+        size: Math.random() * 16 + 10,
+        delay: Math.random() * 0.5,
+        duration: Math.random() * 1.5 + 1.5,
       });
     }
     setPetals(newPetals);
 
-    // Start fade after petals have fallen
+    // Start fade after 1.5 seconds
     const fadeTimer = setTimeout(() => {
       setPhase("fade");
-    }, 2500);
+    }, 1500);
 
-    // Complete loading
+    // Complete loading quickly
     const completeTimer = setTimeout(() => {
       onComplete();
-    }, 3200);
+    }, 2000);
 
     return () => {
       clearTimeout(fadeTimer);

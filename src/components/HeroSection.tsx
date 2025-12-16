@@ -16,16 +16,16 @@ const HeroSection = () => {
           alt="Sakura petals falling in snow"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-transparent to-background/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background/70" />
       </div>
 
       {/* Content */}
-      <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
+      <div className="relative z-20 max-w-[1100px] mx-auto px-6 text-center py-32">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-sakura-dark text-sm tracking-[0.3em] uppercase mb-8"
+          className="text-sakura-dark text-xs tracking-[0.4em] uppercase mb-6"
         >
           Student Community
         </motion.p>
@@ -34,7 +34,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-[1.1]"
+          className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-foreground mb-4 leading-[0.95]"
         >
           Connect.
           <br />
@@ -45,24 +45,33 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="text-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-10"
+          className="text-foreground/70 text-lg md:text-xl max-w-xl mx-auto mb-4"
         >
           A student-led community fostering peer learning, collaboration, and meaningful connections.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.7 }}
+          className="text-muted-foreground/60 text-sm tracking-wide mb-10"
+        >
+          DYPIU · Student-run community club
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="flex items-center justify-center gap-4"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button variant="sakura" size="lg" asChild>
+          <Button variant="sakura" size="lg" asChild className="min-w-[160px]">
             <a href="/join">
               Join Us
               <ArrowRight className="ml-2 h-5 w-5" />
             </a>
           </Button>
-          <Button variant="hero-outline" size="lg" asChild>
+          <Button variant="outline" size="lg" asChild className="min-w-[160px]">
             <a href="/links">
               Our Platforms
             </a>

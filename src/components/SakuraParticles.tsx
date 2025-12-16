@@ -18,31 +18,31 @@ const SakuraParticles = () => {
   useEffect(() => {
     const newParticles: Particle[] = [];
     
-    // Create more sakura petals
-    for (let i = 0; i < 35; i++) {
+    // Fewer, slower sakura petals with lower opacity
+    for (let i = 0; i < 18; i++) {
       newParticles.push({
         id: i,
         x: Math.random() * 100,
-        size: Math.random() * 16 + 10,
-        duration: Math.random() * 12 + 10,
-        delay: Math.random() * 15,
+        size: Math.random() * 10 + 8,
+        duration: Math.random() * 15 + 18, // Much slower: 18-33s
+        delay: Math.random() * 12,
         type: "petal",
         rotation: Math.random() * 360,
-        swayAmount: Math.random() * 150 + 50,
+        swayAmount: Math.random() * 60 + 30,
       });
     }
     
-    // Create snowflakes
-    for (let i = 35; i < 60; i++) {
+    // Fewer snowflakes
+    for (let i = 18; i < 28; i++) {
       newParticles.push({
         id: i,
         x: Math.random() * 100,
-        size: Math.random() * 5 + 2,
-        duration: Math.random() * 10 + 8,
-        delay: Math.random() * 10,
+        size: Math.random() * 3 + 2,
+        duration: Math.random() * 18 + 22, // Slower: 22-40s
+        delay: Math.random() * 15,
         type: "snow",
         rotation: 0,
-        swayAmount: Math.random() * 40 + 20,
+        swayAmount: Math.random() * 30 + 15,
       });
     }
     
@@ -64,8 +64,10 @@ const SakuraParticles = () => {
           animate={{
             y: ["0vh", "105vh"],
             x: [0, particle.swayAmount, -particle.swayAmount / 2, particle.swayAmount],
-            opacity: [0, 1, 1, 0.8, 0],
-            rotate: particle.type === "petal" ? [particle.rotation, particle.rotation + 720] : [0, 360],
+            opacity: particle.type === "petal" 
+              ? [0, 0.35, 0.35, 0.3, 0]  // Lower opacity for petals
+              : [0, 0.25, 0.25, 0.2, 0], // Even lower for snow
+            rotate: particle.type === "petal" ? [particle.rotation, particle.rotation + 360] : [0, 180],
           }}
           transition={{
             duration: particle.duration,
@@ -78,17 +80,16 @@ const SakuraParticles = () => {
             <div
               className="w-full h-full"
               style={{
-                background: `linear-gradient(135deg, hsl(340 75% 85%), hsl(350 70% 78%))`,
+                background: `linear-gradient(135deg, hsl(340 70% 85%), hsl(350 65% 80%))`,
                 borderRadius: "150% 0 150% 0",
-                boxShadow: "0 2px 10px hsl(340 60% 70% / 0.4)",
               }}
             />
           ) : (
             <div
               className="w-full h-full rounded-full"
               style={{
-                background: "radial-gradient(circle, white 0%, transparent 70%)",
-                boxShadow: "0 0 10px white",
+                background: "white",
+                filter: "blur(1px)",
               }}
             />
           )}
