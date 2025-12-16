@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Flower2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Platforms", href: "#platforms" },
-  { label: "Activities", href: "#activities" },
-  { label: "Join", href: "#join" },
+  { label: "About", href: "/#about" },
+  { label: "Links", href: "/links" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Team", href: "/team" },
+  { label: "Join", href: "/join" },
 ];
 
 const Navbar = () => {
@@ -32,20 +33,30 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto px-6">
         <nav className="flex items-center justify-between">
-          <a href="#home" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <Flower2 className="w-5 h-5 text-sakura" />
             <span className="font-display text-lg text-foreground">StudentConnect</span>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-10">
             {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm text-foreground/70 hover:text-sakura-dark transition-colors duration-300"
-              >
-                {item.label}
-              </a>
+              item.href.startsWith("/#") ? (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm text-foreground/70 hover:text-sakura-dark transition-colors duration-300"
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="text-sm text-foreground/70 hover:text-sakura-dark transition-colors duration-300"
+                >
+                  {item.label}
+                </Link>
+              )
             ))}
           </div>
 
@@ -67,14 +78,25 @@ const Navbar = () => {
             >
               <div className="py-6 flex flex-col items-center gap-4">
                 {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="text-foreground hover:text-sakura-dark transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
+                  item.href.startsWith("/#") ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="text-foreground hover:text-sakura-dark transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      key={item.label}
+                      to={item.href}
+                      className="text-foreground hover:text-sakura-dark transition-colors"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  )
                 ))}
               </div>
             </motion.div>
