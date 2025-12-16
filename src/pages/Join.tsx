@@ -30,22 +30,21 @@ const Join = () => {
       <Navbar />
       
       <main className="pt-32 pb-24">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-[900px] mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <p className="text-sakura-dark text-sm tracking-[0.2em] uppercase mb-4">
+            <p className="text-sakura-dark text-xs tracking-[0.3em] uppercase mb-4">
               Become Part of Us
             </p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground mb-6">
+            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-4">
               Join Our Community
             </h1>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              Take the first step towards being part of something meaningful. 
-              We welcome all students who share our values.
+            <p className="text-foreground/60 max-w-md mx-auto">
+              Take the first step towards being part of something meaningful.
             </p>
           </motion.div>
 
@@ -65,10 +64,10 @@ const Join = () => {
                     key={benefit}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="flex items-center gap-3 text-muted-foreground"
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.08 }}
+                    className="flex items-center gap-3 text-foreground/70"
                   >
-                    <div className="w-5 h-5 rounded-full bg-sakura/20 flex items-center justify-center flex-shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-sakura/15 flex items-center justify-center flex-shrink-0">
                       <Check className="w-3 h-3 text-sakura-dark" />
                     </div>
                     {benefit}
@@ -82,12 +81,11 @@ const Join = () => {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/50"
             >
               {!submitted ? (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <label className="block text-sm text-foreground mb-2">
+                    <label className="block text-sm text-foreground/70 mb-2">
                       Your Name
                     </label>
                     <input
@@ -95,12 +93,12 @@ const Join = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-sakura/50 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-transparent border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-sakura/50 transition-colors"
                       placeholder="Enter your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-foreground mb-2">
+                    <label className="block text-sm text-foreground/70 mb-2">
                       Email Address
                     </label>
                     <input
@@ -108,31 +106,29 @@ const Join = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-background border border-border/50 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-sakura/50 transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-transparent border border-border text-foreground placeholder:text-foreground/40 focus:outline-none focus:border-sakura/50 transition-colors"
                       placeholder="your@email.com"
                     />
+                    <p className="text-xs text-foreground/40 mt-2">We'll only use this to reach out.</p>
                   </div>
-                  <Button type="submit" variant="sakura" size="lg" className="w-full">
-                    Submit Interest
+                  <Button type="submit" variant="sakura" size="lg" className="w-full mt-2">
+                    Join the Community
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                  <p className="text-xs text-muted-foreground text-center">
-                    We'll reach out with next steps
-                  </p>
                 </form>
               ) : (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-8"
+                  className="text-center py-12"
                 >
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-sakura/20 flex items-center justify-center">
-                    <Check className="w-8 h-8 text-sakura-dark" />
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-sakura/15 flex items-center justify-center">
+                    <Check className="w-7 h-7 text-sakura-dark" />
                   </div>
                   <h3 className="font-display text-2xl text-foreground mb-2">
                     Thank You!
                   </h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-foreground/60">
                     We've received your interest. We'll be in touch soon.
                   </p>
                 </motion.div>
