@@ -34,23 +34,37 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-8 leading-[1.1]"
+          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-[1.1]"
         >
           Connect.
           <br />
           <span className="text-gradient-sakura">Thrive.</span>
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="text-foreground/70 text-lg md:text-xl max-w-2xl mx-auto mb-10"
+        >
+          A student-led community fostering peer learning, collaboration, and meaningful connections.
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="flex items-center justify-center gap-6"
+          className="flex items-center justify-center gap-4"
         >
           <Button variant="sakura" size="lg" asChild>
-            <a href="#join">
+            <a href="/join">
               Join Us
               <ArrowRight className="ml-2 h-5 w-5" />
+            </a>
+          </Button>
+          <Button variant="hero-outline" size="lg" asChild>
+            <a href="/links">
+              Our Platforms
             </a>
           </Button>
         </motion.div>
