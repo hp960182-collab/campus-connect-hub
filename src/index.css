@@ -12,47 +12,47 @@
 
 @layer base {
   :root {
-    /* Sakura Snow Color Palette */
-    --background: 240 4% 95%;
-    --foreground: 240 5% 10%;
+    /* Sakura Snow Color Palette - Pure & Snowy */
+    --background: 0 0% 99%;
+    --foreground: 240 10% 15%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 240 5% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 15%;
 
-    --popover: 240 5% 90%;
-    --popover-foreground: 240 5% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 15%;
 
-    --primary: 258 89% 66%;
-    --primary-foreground: 250 100% 97%;
+    --primary: 340 65% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 5% 33%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 340 20% 92%;
+    --secondary-foreground: 340 50% 40%;
 
-    --muted: 240 4% 83%;
-    --muted-foreground: 240 5% 10%;
+    --muted: 340 15% 95%;
+    --muted-foreground: 240 5% 45%;
 
-    --accent: 269 100% 98%;
-    --accent-foreground: 270 91% 65%;
+    --accent: 340 70% 95%;
+    --accent-foreground: 340 60% 45%;
 
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 240 4% 83%;
-    --input: 240 4% 83%;
-    --ring: 258 89% 66%;
+    --border: 340 20% 90%;
+    --input: 340 15% 92%;
+    --ring: 340 65% 65%;
 
     --radius: 0.5rem;
 
-    /* Custom Sakura colors */
-    --sakura: 340 60% 75%;
-    --sakura-dark: 340 55% 55%;
-    --sakura-light: 340 70% 88%;
-    --sakura-glow: 340 80% 80%;
-    --snow: 220 30% 97%;
-    --frost: 220 25% 92%;
-    --petal: 350 65% 82%;
-    --blossom: 330 50% 60%;
-    --branch: 25 30% 35%;
+    /* Custom Sakura colors - refined pink tones */
+    --sakura: 340 70% 70%;
+    --sakura-dark: 340 60% 50%;
+    --sakura-light: 340 80% 90%;
+    --sakura-glow: 340 85% 75%;
+    --snow: 0 0% 100%;
+    --frost: 220 20% 97%;
+    --petal: 345 75% 80%;
+    --blossom: 335 55% 55%;
+    --branch: 25 35% 30%;
 
     /* Semantic aliases */
     --navy: 280 20% 15%;
