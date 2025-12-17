@@ -3,6 +3,10 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import ActivitiesSection from "@/components/ActivitiesSection";
+import PlatformsSection from "@/components/PlatformsSection";
+import GuidelinesSection from "@/components/GuidelinesSection";
+import JoinSection from "@/components/JoinSection";
 import Footer from "@/components/Footer";
 import SakuraParticles from "@/components/SakuraParticles";
 import LoadingScreen from "@/components/LoadingScreen";
@@ -24,6 +28,10 @@ const Index = () => {
         <Navbar />
         <HeroSection />
         <AboutSection />
+        <ActivitiesSection />
+        <PlatformsSection />
+        <GuidelinesSection />
+        <JoinSection />
         <Footer />
       </motion.main>
     </>
