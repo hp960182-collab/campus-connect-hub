@@ -11,48 +11,42 @@ interface Petal {
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [petals, setPetals] = useState<Petal[]>([]);
-  const [phase, setPhase] = useState<"petals" | "fade">("petals");
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     // Create initial burst of petals
     const newPetals: Petal[] = [];
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 25; i++) {
       newPetals.push({
         id: i,
         x: Math.random() * 100,
-        size: Math.random() * 16 + 10,
-        delay: Math.random() * 0.5,
-        duration: Math.random() * 1.5 + 1.5,
+        size: Math.random() * 14 + 8,
+        delay: Math.random() * 0.3,
+        duration: Math.random() * 1 + 1,
       });
     }
     setPetals(newPetals);
 
-    // Start fade after 1.5 seconds
-    const fadeTimer = setTimeout(() => {
-      setPhase("fade");
-    }, 1500);
-
-    // Complete loading quickly
+    // Complete loading after 1.8 seconds
     const completeTimer = setTimeout(() => {
-      onComplete();
-    }, 2000);
+      setIsVisible(false);
+      setTimeout(onComplete, 500); // Wait for fade animation
+    }, 1800);
 
     return () => {
-      clearTimeout(fadeTimer);
       clearTimeout(completeTimer);
     };
   }, [onComplete]);
 
   return (
     <AnimatePresence>
-      {phase !== "fade" || true ? (
+      {isVisible && (
         <motion.div
           className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
           style={{ backgroundColor: "hsl(0 0% 98%)" }}
           initial={{ opacity: 1 }}
-          animate={{ opacity: phase === "fade" ? 0 : 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
         >
           {/* Sakura branch silhouette at top */}
           <div className="absolute top-0 right-0 w-full h-64 opacity-20">
@@ -104,7 +98,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
             className="relative z-10 text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
             <motion.div
               className="w-12 h-12 mx-auto mb-4"
@@ -128,7 +122,7 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
             </p>
           </motion.div>
         </motion.div>
-      ) : null}
+      )}
     </AnimatePresence>
   );
 };
