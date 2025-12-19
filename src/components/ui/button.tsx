@@ -5,21 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 active:scale-[0.98]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border-2 border-sakura text-sakura-dark bg-transparent hover:bg-sakura hover:text-white",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        default: "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 hover:scale-[1.02] hover:shadow-md",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 hover:scale-[1.02]",
+        outline: "border-2 border-sakura text-sakura-dark bg-transparent hover:bg-sakura-light/50 hover:scale-[1.02]",
+        secondary: "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80 hover:scale-[1.02]",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        sakura: "bg-gradient-to-r from-sakura-dark to-sakura text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105",
-        gold: "bg-gradient-to-r from-sakura-dark to-sakura text-white hover:opacity-90 shadow-md hover:shadow-lg hover:scale-105",
-        navy: "bg-foreground text-background hover:opacity-90",
-        hero: "bg-gradient-to-r from-sakura-dark to-sakura text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105",
-        "hero-outline": "border-2 border-foreground/30 text-foreground bg-transparent hover:bg-foreground/10 backdrop-blur-sm",
+        sakura: "bg-gradient-to-r from-sakura-dark to-sakura text-primary-foreground font-semibold shadow-sakura hover:shadow-glow hover:scale-[1.03]",
+        gold: "bg-gradient-to-r from-gold to-gold-light text-foreground hover:opacity-90 shadow-md hover:shadow-lg hover:scale-[1.03]",
+        navy: "bg-foreground text-background hover:opacity-90 hover:scale-[1.02]",
+        hero: "bg-gradient-to-r from-sakura-dark to-sakura text-primary-foreground font-semibold shadow-sakura hover:shadow-glow hover:scale-[1.03]",
+        "hero-outline": "border-2 border-foreground/20 text-foreground bg-background/5 backdrop-blur-sm hover:bg-foreground/10 hover:border-foreground/30 hover:scale-[1.02]",
       },
       size: {
         default: "h-11 px-6 py-2",
