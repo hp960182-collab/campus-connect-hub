@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
 
 @tailwind base;
@@ -12,139 +9,162 @@
 
 @layer base {
   :root {
-    /* Sakura Snow Color Palette - Pure & Snowy */
+    /* ===== SPACING SCALE (4px base) ===== */
+    --space-1: 0.25rem;  /* 4px */
+    --space-2: 0.5rem;   /* 8px */
+    --space-3: 0.75rem;  /* 12px */
+    --space-4: 1rem;     /* 16px */
+    --space-5: 1.25rem;  /* 20px */
+    --space-6: 1.5rem;   /* 24px */
+    --space-8: 2rem;     /* 32px */
+    --space-10: 2.5rem;  /* 40px */
+    --space-12: 3rem;    /* 48px */
+    --space-16: 4rem;    /* 64px */
+    --space-20: 5rem;    /* 80px */
+    --space-24: 6rem;    /* 96px */
+
+    /* ===== CORE COLOR PALETTE ===== */
+    /* Primary: Sakura Pink */
     --background: 0 0% 99%;
-    --foreground: 240 10% 15%;
+    --foreground: 240 10% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 15%;
+    --card-foreground: 240 10% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 15%;
+    --popover-foreground: 240 10% 12%;
 
-    --primary: 340 65% 65%;
+    /* Primary Sakura - Core brand color */
+    --primary: 340 65% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 340 20% 92%;
-    --secondary-foreground: 340 50% 40%;
+    /* Secondary - Light sakura tint */
+    --secondary: 340 25% 94%;
+    --secondary-foreground: 340 50% 35%;
 
-    --muted: 340 15% 95%;
-    --muted-foreground: 240 5% 45%;
+    --muted: 340 12% 94%;
+    --muted-foreground: 240 5% 40%;
 
-    --accent: 340 70% 95%;
-    --accent-foreground: 340 60% 45%;
+    --accent: 340 60% 93%;
+    --accent-foreground: 340 55% 40%;
 
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 340 20% 90%;
-    --input: 340 15% 92%;
-    --ring: 340 65% 65%;
+    --border: 340 15% 88%;
+    --input: 340 12% 91%;
+    --ring: 340 65% 58%;
 
-    --radius: 0.5rem;
+    /* ===== BORDER RADIUS (2 values) ===== */
+    --radius: 0.75rem;      /* 12px - cards, inputs */
+    --radius-lg: 1.5rem;    /* 24px - larger cards, buttons */
+    --radius-full: 9999px;  /* pills, badges */
 
-    /* Custom Sakura colors - refined pink tones */
-    --sakura: 340 70% 70%;
-    --sakura-dark: 340 60% 50%;
-    --sakura-light: 340 80% 90%;
-    --sakura-glow: 340 85% 75%;
+    /* ===== SAKURA THEME COLORS ===== */
+    --sakura: 340 65% 65%;
+    --sakura-dark: 340 55% 48%;
+    --sakura-light: 340 75% 92%;
+    --sakura-glow: 340 80% 72%;
     --snow: 0 0% 100%;
-    --frost: 220 20% 97%;
-    --petal: 345 75% 80%;
-    --blossom: 335 55% 55%;
-    --branch: 25 35% 30%;
+    --frost: 220 15% 97%;
+    --petal: 345 70% 82%;
+    --blossom: 335 50% 52%;
+    --branch: 25 35% 28%;
 
     /* Semantic aliases */
-    --navy: 280 20% 15%;
-    --navy-light: 280 15% 25%;
-    --navy-dark: 280 25% 10%;
+    --navy: 280 18% 12%;
+    --navy-light: 280 12% 22%;
+    --navy-dark: 280 22% 8%;
     --ivory: 0 0% 98%;
-    --cream: 340 30% 95%;
-    --gold: 340 60% 65%;
-    --gold-light: 340 70% 75%;
-    --gold-muted: 340 40% 60%;
+    --cream: 340 25% 96%;
+    --gold: 42 75% 55%;
+    --gold-light: 42 80% 70%;
+    --gold-muted: 42 50% 50%;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(280 20% 12%) 0%, hsl(320 30% 20%) 50%, hsl(340 40% 25%) 100%);
-    --gradient-sakura: linear-gradient(135deg, hsl(340 60% 65%) 0%, hsl(350 65% 75%) 100%);
-    --gradient-snow: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(340 30% 97%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(340 25% 98%) 100%);
+    /* ===== GRADIENTS ===== */
+    --gradient-hero: linear-gradient(135deg, hsl(280 18% 10%) 0%, hsl(320 25% 18%) 50%, hsl(340 35% 22%) 100%);
+    --gradient-sakura: linear-gradient(135deg, hsl(340 55% 48%) 0%, hsl(350 60% 62%) 100%);
+    --gradient-snow: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(340 25% 97%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(340 20% 98%) 100%);
     --gradient-petal: linear-gradient(135deg, hsl(340 70% 88%) 0%, hsl(350 65% 82%) 100%);
+    --gradient-section: linear-gradient(180deg, hsl(340 30% 97%) 0%, hsl(0 0% 99%) 100%);
 
-    /* Shadows */
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-sakura: 0 8px 32px -8px hsl(340 60% 65% / 0.35);
-    --shadow-glow: 0 0 40px hsl(340 80% 80% / 0.4);
+    /* ===== SHADOWS ===== */
+    --shadow-2xs: 0 1px 2px 0px hsl(0 0% 0% / 0.04);
+    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.06);
+    --shadow-sm: 0 2px 4px -1px hsl(0 0% 0% / 0.06), 0 1px 2px -1px hsl(0 0% 0% / 0.04);
+    --shadow-md: 0 4px 8px -2px hsl(0 0% 0% / 0.08), 0 2px 4px -2px hsl(0 0% 0% / 0.04);
+    --shadow-lg: 0 8px 16px -4px hsl(0 0% 0% / 0.1), 0 4px 8px -4px hsl(0 0% 0% / 0.06);
+    --shadow-xl: 0 16px 32px -8px hsl(0 0% 0% / 0.12), 0 8px 16px -8px hsl(0 0% 0% / 0.08);
+    --shadow-2xl: 0 24px 48px -12px hsl(0 0% 0% / 0.18);
+    --shadow-sakura: 0 8px 24px -6px hsl(340 60% 55% / 0.3);
+    --shadow-glow: 0 0 32px hsl(340 75% 70% / 0.35);
+    --shadow-card-hover: 0 12px 28px -8px hsl(0 0% 0% / 0.12), 0 4px 12px -4px hsl(340 50% 50% / 0.08);
+
+    /* ===== TRANSITIONS ===== */
+    --transition-fast: 150ms ease-out;
+    --transition-base: 200ms ease-out;
+    --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5% 10%;
-    --sidebar-primary: 258 89% 66%;
-    --sidebar-primary-foreground: 250 100% 97%;
-    --sidebar-accent: 240 5% 33%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 4% 83%;
-    --sidebar-ring: 258 89% 66%;
-    --chart-1: 255 91% 76%;
-    --chart-2: 270 95% 75%;
-    --chart-3: 234 89% 73%;
-    --chart-4: 258 89% 66%;
-    --chart-5: 240 3% 46%;
+    --sidebar-primary: 340 65% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 340 25% 94%;
+    --sidebar-accent-foreground: 340 50% 35%;
+    --sidebar-border: 340 15% 88%;
+    --sidebar-ring: 340 65% 58%;
     --sidebar: 0 0% 98%;
-    --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-    --font-serif: 'Cormorant Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-    --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-    --tracking-normal: 0em;
+
+    /* Charts */
+    --chart-1: 340 65% 65%;
+    --chart-2: 340 50% 55%;
+    --chart-3: 340 80% 78%;
+    --chart-4: 42 75% 55%;
+    --chart-5: 240 5% 45%;
+
+    /* Font */
+    --font-sans: 'Outfit', 'Montserrat', ui-sans-serif, system-ui, sans-serif;
+    --font-serif: 'Cormorant Garamond', ui-serif, Georgia, serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
     --spacing: 0.25rem;
   }
+
   .dark {
-    --background: 240 5% 10%;
-    --foreground: 0 0% 98%;
-    --card: 240 3% 15%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 5% 26%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 255 91% 76%;
-    --primary-foreground: 261 72% 22%;
-    --secondary: 240 3% 46%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3% 46%;
-    --muted-foreground: 0 0% 98%;
-    --accent: 273 86% 20%;
-    --accent-foreground: 270 95% 75%;
-    --border: 240 5% 33%;
-    --input: 240 5% 33%;
-    --ring: 255 91% 76%;
-    --destructive: 0 84% 60%;
+    --background: 240 8% 8%;
+    --foreground: 0 0% 96%;
+    --card: 240 6% 12%;
+    --card-foreground: 0 0% 96%;
+    --popover: 240 6% 14%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 340 70% 68%;
+    --primary-foreground: 240 8% 8%;
+    --secondary: 340 20% 18%;
+    --secondary-foreground: 340 60% 80%;
+    --muted: 240 5% 20%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 340 30% 22%;
+    --accent-foreground: 340 65% 75%;
+    --border: 240 5% 20%;
+    --input: 240 5% 18%;
+    --ring: 340 70% 68%;
+    --destructive: 0 80% 55%;
     --destructive-foreground: 0 85% 97%;
-    --chart-1: 252 94% 85%;
-    --chart-2: 269 97% 85%;
-    --chart-3: 229 93% 81%;
-    --chart-4: 255 91% 76%;
-    --chart-5: 240 3% 46%;
-    --sidebar: 240 3% 15%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 255 91% 76%;
-    --sidebar-primary-foreground: 261 72% 22%;
-    --sidebar-accent: 270 95% 75%;
-    --sidebar-accent-foreground: 273 86% 20%;
-    --sidebar-border: 240 5% 33%;
-    --sidebar-ring: 255 91% 76%;
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 1px 2px -1px hsl(0 0% 0% / 0.1);
-    --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 4px 6px -1px hsl(0 0% 0% / 0.1);
-    --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.1), 0 8px 10px -1px hsl(0 0% 0% / 0.1);
-    --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+    --chart-1: 340 70% 72%;
+    --chart-2: 340 55% 62%;
+    --chart-3: 340 85% 82%;
+    --chart-4: 42 80% 62%;
+    --chart-5: 240 5% 55%;
+    --sidebar: 240 6% 12%;
+    --sidebar-foreground: 0 0% 96%;
+    --sidebar-primary: 340 70% 68%;
+    --sidebar-primary-foreground: 240 8% 8%;
+    --sidebar-accent: 340 30% 22%;
+    --sidebar-accent-foreground: 340 65% 75%;
+    --sidebar-border: 240 5% 20%;
+    --sidebar-ring: 340 70% 68%;
   }
 }
 
@@ -155,22 +175,62 @@
 
   html {
     scroll-behavior: smooth;
+    font-size: 16px;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Outfit', system-ui, sans-serif;
+    font-family: var(--font-sans);
+    line-height: 1.6;
   }
 
+  /* ===== TYPOGRAPHY SCALE ===== */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    @apply font-semibold tracking-tight;
+    font-family: var(--font-serif);
+    @apply font-semibold tracking-tight leading-tight;
+  }
+
+  h1 {
+    @apply text-5xl sm:text-6xl md:text-7xl lg:text-8xl;
+  }
+
+  h2 {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+
+  .body-lg {
+    @apply text-lg leading-relaxed;
+  }
+
+  .body-base {
+    @apply text-base leading-relaxed;
+  }
+
+  .body-sm {
+    @apply text-sm leading-relaxed;
+  }
+
+  .caption {
+    @apply text-xs leading-normal tracking-wide;
   }
 }
 
 @layer components {
+  /* ===== LAYOUT ===== */
   .section-padding {
-    @apply px-4 py-16 sm:px-6 md:py-24 lg:px-8;
+    @apply px-4 py-16 sm:px-6 md:py-20 lg:px-8 lg:py-24;
+  }
+
+  .section-padding-lg {
+    @apply px-4 py-20 sm:px-6 md:py-24 lg:px-8 lg:py-32;
   }
 
   .container-narrow {
@@ -181,6 +241,20 @@
     @apply max-w-7xl mx-auto;
   }
 
+  .container-main {
+    @apply max-w-[1100px] mx-auto px-4 sm:px-6;
+  }
+
+  /* ===== SECTION SEPARATORS ===== */
+  .section-separator {
+    @apply border-t border-border/40;
+  }
+
+  .section-tint {
+    background: var(--gradient-section);
+  }
+
+  /* ===== GRADIENTS ===== */
   .text-gradient-sakura {
     background: var(--gradient-sakura);
     -webkit-background-clip: text;
@@ -188,60 +262,207 @@
     background-clip: text;
   }
 
+  /* ===== CARDS ===== */
+  .card-base {
+    @apply rounded-xl border border-border/60 bg-card p-6 transition-all duration-300;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .card-base:hover {
+    @apply border-sakura/30 -translate-y-1;
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .card-base:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
   .card-elevated {
+    @apply rounded-xl border border-border/50 bg-card p-6 transition-all duration-300;
     background: var(--gradient-card);
     box-shadow: var(--shadow-md);
-    @apply rounded-2xl border border-border/50 transition-all duration-500;
   }
 
   .card-elevated:hover {
-    box-shadow: var(--shadow-lg);
     @apply -translate-y-1 border-sakura/30;
+    box-shadow: var(--shadow-card-hover);
   }
 
+  .card-interactive {
+    @apply card-base cursor-pointer;
+  }
+
+  .card-interactive:active {
+    @apply scale-[0.98];
+  }
+
+  /* ===== BUTTONS ===== */
   .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-semibold text-primary-foreground transition-all duration-300;
     background: var(--gradient-sakura);
     box-shadow: var(--shadow-sakura);
-    @apply text-white font-semibold px-6 py-3 rounded-full transition-all duration-300;
   }
 
   .btn-primary:hover {
-    @apply scale-105;
+    @apply scale-[1.03];
     box-shadow: var(--shadow-glow);
   }
 
+  .btn-primary:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  .btn-primary:active {
+    @apply scale-[0.98];
+  }
+
+  .btn-primary:disabled {
+    @apply opacity-50 pointer-events-none;
+  }
+
   .btn-secondary {
-    @apply bg-foreground text-background px-6 py-3 rounded-full font-medium transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium bg-secondary text-secondary-foreground transition-all duration-300;
+    box-shadow: var(--shadow-xs);
   }
 
   .btn-secondary:hover {
-    @apply opacity-90;
+    @apply bg-secondary/80 scale-[1.02];
   }
 
-  .btn-outline {
-    @apply border-2 border-sakura text-sakura-dark px-6 py-3 rounded-full font-medium transition-all duration-300;
+  .btn-secondary:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 
-  .btn-outline:hover {
-    @apply bg-sakura text-white;
+  .btn-secondary:active {
+    @apply scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-medium text-foreground/70 transition-all duration-300;
+  }
+
+  .btn-ghost:hover {
+    @apply bg-accent text-accent-foreground;
+  }
+
+  .btn-ghost:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* ===== SECTION HEADERS ===== */
+  .section-header {
+    @apply text-center mb-12 md:mb-16;
+  }
+
+  .section-eyebrow {
+    @apply text-sakura-dark text-xs tracking-[0.3em] uppercase mb-4 font-medium;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4;
+    @apply font-display text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4;
   }
 
-  .section-subtitle {
-    @apply text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto;
+  .section-description {
+    @apply text-muted-foreground text-lg max-w-2xl mx-auto;
   }
 
-  /* Sakura petal animation */
+  /* ===== BADGES & CHIPS ===== */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-sakura {
+    @apply badge bg-sakura-light text-sakura-dark;
+  }
+
+  .badge-new {
+    @apply badge bg-gold/20 text-gold-muted border border-gold/30;
+  }
+
+  .badge-featured {
+    @apply badge bg-sakura text-primary-foreground;
+  }
+
+  /* ===== LINKS ===== */
+  .link-underline {
+    @apply relative inline-block text-foreground/70 transition-colors duration-200;
+  }
+
+  .link-underline::after {
+    @apply content-[''] absolute left-0 bottom-0 w-full h-px bg-sakura scale-x-0 origin-right transition-transform duration-300;
+  }
+
+  .link-underline:hover {
+    @apply text-sakura-dark;
+  }
+
+  .link-underline:hover::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  .link-underline:focus-visible {
+    @apply outline-none text-sakura-dark;
+  }
+
+  .link-underline:focus-visible::after {
+    @apply scale-x-100 origin-left;
+  }
+
+  /* ===== NAV LINK STATES ===== */
+  .nav-link {
+    @apply relative px-3 py-2 text-sm font-medium text-foreground/60 transition-all duration-200 rounded-lg;
+  }
+
+  .nav-link:hover {
+    @apply text-sakura-dark bg-sakura-light/40;
+  }
+
+  .nav-link:focus-visible {
+    @apply outline-none ring-2 ring-sakura/50 text-sakura-dark;
+  }
+
+  .nav-link-active {
+    @apply text-sakura-dark font-semibold;
+  }
+
+  .nav-link-active::after {
+    @apply content-[''] absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-sakura rounded-full;
+  }
+
+  /* ===== ICON CONTAINERS ===== */
+  .icon-box {
+    @apply flex-shrink-0 w-12 h-12 rounded-xl bg-sakura-light/60 flex items-center justify-center transition-all duration-300;
+  }
+
+  .icon-box-lg {
+    @apply flex-shrink-0 w-16 h-16 rounded-2xl bg-sakura-light/60 flex items-center justify-center transition-all duration-300;
+  }
+
+  .icon-box:hover, .icon-box-lg:hover {
+    @apply bg-sakura-light scale-105;
+  }
+
+  /* ===== FORM ELEMENTS ===== */
+  .input-base {
+    @apply w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground transition-all duration-200;
+  }
+
+  .input-base:hover {
+    @apply border-border/80;
+  }
+
+  .input-base:focus {
+    @apply outline-none ring-2 ring-sakura/30 border-sakura/50;
+  }
+
+  /* ===== ANIMATIONS ===== */
   .petal {
     position: absolute;
     width: 10px;
     height: 10px;
-    background: linear-gradient(135deg, hsl(340 70% 88%), hsl(350 65% 82%));
+    background: var(--gradient-petal);
     border-radius: 150% 0 150% 0;
-    opacity: 0.8;
+    opacity: 0.7;
     animation: fall linear infinite;
   }
 
@@ -251,10 +472,10 @@
       opacity: 0;
     }
     10% {
-      opacity: 0.8;
+      opacity: 0.7;
     }
     90% {
-      opacity: 0.8;
+      opacity: 0.7;
     }
     100% {
       transform: translateY(110vh) rotate(720deg) translateX(100px);
@@ -262,14 +483,13 @@
     }
   }
 
-  /* Snow particle */
   .snowflake {
     position: absolute;
     width: 6px;
     height: 6px;
     background: white;
     border-radius: 50%;
-    opacity: 0.6;
+    opacity: 0.5;
     animation: snowfall linear infinite;
     filter: blur(1px);
   }
@@ -280,15 +500,29 @@
       opacity: 0;
     }
     10% {
-      opacity: 0.6;
+      opacity: 0.5;
     }
     90% {
-      opacity: 0.6;
+      opacity: 0.5;
     }
     100% {
       transform: translateY(110vh) translateX(50px);
       opacity: 0;
     }
+  }
+
+  /* Ambient float animation */
+  @keyframes ambient-float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(2deg);
+    }
+  }
+
+  .animate-ambient-float {
+    animation: ambient-float 8s ease-in-out infinite;
   }
 }
 
@@ -297,16 +531,21 @@
     text-wrap: balance;
   }
 
+  /* ===== ANIMATION UTILITIES ===== */
   .animate-fade-up {
     animation: fadeUp 0.6s ease-out forwards;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeIn 0.5s ease-out forwards;
   }
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
   }
 
   @keyframes fadeUp {
@@ -336,5 +575,47 @@
     50% {
       transform: translateY(-10px);
     }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* ===== HOVER UTILITIES ===== */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-200;
+  }
+
+  .hover-scale:hover {
+    @apply scale-[1.03];
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-300;
+  }
+
+  .hover-glow:hover {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* ===== FOCUS UTILITIES ===== */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
 }

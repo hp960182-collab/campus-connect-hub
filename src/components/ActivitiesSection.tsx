@@ -7,22 +7,26 @@ const activities = [
   {
     icon: Users,
     title: "Study Groups",
-    description: "Collaborative learning sessions where peers help each other succeed academically."
+    description: "Collaborative learning sessions where peers help each other succeed academically.",
+    tag: "Popular"
   },
   {
     icon: Calendar,
     title: "Events & Meetups",
-    description: "Regular gatherings to network, share ideas, and build lasting friendships."
+    description: "Regular gatherings to network, share ideas, and build lasting friendships.",
+    tag: "Upcoming"
   },
   {
     icon: MessageCircle,
     title: "Open Discussions",
-    description: "Safe spaces for conversations about academics, career, and personal growth."
+    description: "Safe spaces for conversations about academics, career, and personal growth.",
+    tag: null
   },
   {
     icon: Lightbulb,
     title: "Skill Workshops",
-    description: "Peer-led sessions covering everything from coding to communication skills."
+    description: "Peer-led sessions covering everything from coding to communication skills.",
+    tag: "New"
   }
 ];
 
@@ -31,15 +35,15 @@ const ActivitiesSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="activities" className="py-32 bg-background relative" ref={ref}>
-      <div className="max-w-[1100px] mx-auto px-6">
+    <section id="activities" className="section-padding-lg bg-background relative border-t border-border/30" ref={ref}>
+      <div className="container-main">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="section-header">
           <motion.p
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
-            transition={{ duration: 1 }}
-            className="text-sakura-dark text-xs tracking-[0.3em] uppercase mb-4 font-medium"
+            transition={{ duration: 0.6 }}
+            className="section-eyebrow"
           >
             What We Do
           </motion.p>
@@ -47,28 +51,44 @@ const ActivitiesSection = () => {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="font-display text-4xl md:text-5xl text-foreground"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="section-title"
           >
-            Activities & Initiatives
+            Discover Activities
           </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="section-description"
+          >
+            Explore our initiatives designed to help you learn, grow, and connect.
+          </motion.p>
         </div>
 
         {/* Activities Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6">
           {activities.map((activity, index) => (
             <motion.div
               key={activity.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className="group flex gap-5 p-6 rounded-2xl bg-snow/50 border border-border/50 hover:border-sakura/30 hover:bg-snow transition-all duration-300"
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              className="group card-base flex gap-5 cursor-pointer"
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-sakura-light/50 flex items-center justify-center group-hover:bg-sakura-light transition-colors duration-300">
+              <div className="icon-box group-hover:bg-sakura-light group-hover:scale-105">
                 <activity.icon className="w-6 h-6 text-sakura-dark" />
               </div>
-              <div>
-                <h3 className="font-display text-xl text-foreground mb-2">{activity.title}</h3>
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="font-serif text-xl text-foreground">{activity.title}</h3>
+                  {activity.tag && (
+                    <span className={`badge ${activity.tag === 'New' ? 'badge-new' : 'badge-sakura'}`}>
+                      {activity.tag}
+                    </span>
+                  )}
+                </div>
                 <p className="text-muted-foreground leading-relaxed">{activity.description}</p>
               </div>
             </motion.div>
