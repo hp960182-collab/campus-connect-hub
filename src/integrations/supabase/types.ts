@@ -14,6 +14,130 @@ export type Database = {
   }
   public: {
     Tables: {
+      campus_issues: {
+        Row: {
+          ai_summary: string | null
+          ai_tags: string[] | null
+          assigned_authority_id: string | null
+          category: Database["public"]["Enums"]["issue_category"]
+          content: string
+          created_at: string
+          id: string
+          is_anonymous: boolean
+          location_area: string | null
+          location_text: string | null
+          priority: Database["public"]["Enums"]["issue_priority"]
+          reporter_id: string | null
+          resolution_notes: string | null
+          resolved_at: string | null
+          status: Database["public"]["Enums"]["issue_status"]
+          updated_at: string
+          upvotes_count: number
+        }
+        Insert: {
+          ai_summary?: string | null
+          ai_tags?: string[] | null
+          assigned_authority_id?: string | null
+          category?: Database["public"]["Enums"]["issue_category"]
+          content: string
+          created_at?: string
+          id?: string
+          is_anonymous?: boolean
+          location_area?: string | null
+          location_text?: string | null
+          priority?: Database["public"]["Enums"]["issue_priority"]
+          reporter_id?: string | null
+          resolution_notes?: string | null
+          resolved_at?: string | null
+          status?: Database["public"]["Enums"]["issue_status"]
+          updated_at?: string
+          upvotes_count?: number
+        }
+        Update: {
+          ai_summary?: string | null
+          ai_tags?: string[] | null
+          assigned_authority_id?: string | null
+          category?: Database["public"]["Enums"]["issue_category"]
+          content?: string
+          created_at?: string
+          id?: string
+          is_anonymous?: boolean
+          location_area?: string | null
+          location_text?: string | null
+          priority?: Database["public"]["Enums"]["issue_priority"]
+          reporter_id?: string | null
+          resolution_notes?: string | null
+          resolved_at?: string | null
+          status?: Database["public"]["Enums"]["issue_status"]
+          updated_at?: string
+          upvotes_count?: number
+        }
+        Relationships: []
+      }
+      issue_comments: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          is_authority_update: boolean
+          issue_id: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          is_authority_update?: boolean
+          issue_id: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          is_authority_update?: boolean
+          issue_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "issue_comments_issue_id_fkey"
+            columns: ["issue_id"]
+            isOneToOne: false
+            referencedRelation: "campus_issues"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      issue_upvotes: {
+        Row: {
+          created_at: string
+          id: string
+          issue_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          issue_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          issue_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "issue_upvotes_issue_id_fkey"
+            columns: ["issue_id"]
+            isOneToOne: false
+            referencedRelation: "campus_issues"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       member_submissions: {
         Row: {
           bio: string | null
@@ -47,15 +171,92 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          department: string | null
+          email: string
+          full_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          department?: string | null
+          email: string
+          full_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          department?: string | null
+          email?: string
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_user_role: {
+        Args: { _user_id: string }
+        Returns: Database["public"]["Enums"]["app_role"]
+      }
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "student" | "authority" | "admin"
+      issue_category:
+        | "infrastructure"
+        | "hygiene"
+        | "safety"
+        | "internet"
+        | "classroom"
+        | "food"
+        | "transport"
+        | "other"
+      issue_priority: "low" | "medium" | "high" | "critical"
+      issue_status:
+        | "reported"
+        | "acknowledged"
+        | "in_progress"
+        | "resolved"
+        | "closed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -182,6 +383,26 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["student", "authority", "admin"],
+      issue_category: [
+        "infrastructure",
+        "hygiene",
+        "safety",
+        "internet",
+        "classroom",
+        "food",
+        "transport",
+        "other",
+      ],
+      issue_priority: ["low", "medium", "high", "critical"],
+      issue_status: [
+        "reported",
+        "acknowledged",
+        "in_progress",
+        "resolved",
+        "closed",
+      ],
+    },
   },
 } as const
